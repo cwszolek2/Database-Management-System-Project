@@ -1,0 +1,26 @@
+Some issues: (See comments in buffer_mgr.c.)
+
+1. You memory allocation in getFrameContents(), getDirtyFlags(), and getFixCounts() is not correct. If we have bm->numPages pages in pool, you should alloc sizeof(X) * numPages.
+
+If you run:
+valgrind --leak-check=full --track-origins=yes ./test_buffer1
+, you will see Invalid read/write. That's because you allocate sizeof(X) * (numPages - 1) memory, but trying to access numPages-th element in the array of X.
+
+Hint: Please do not ignore warnings given by valgrind, that's useful for debuging.
+
+2. You did not pass the testError() in test_assign2_2.c. (E.g., L163, L175)
+
+(test_assign2_2.c has a bug itself though, L165 CHECK(shutdownBufferPool(bm)); should not return RC_OK.)
+
+========================================
+
+Some recommendations:
+
+1. DIY - Don't repeat yourself.
+
+Usually enqueue() does not include dequeue(). If you distinct them out, you can reuse them. E.g., in LRU, pin(1), if found in buffer, dequeue(1), then enqueue(1). If not found, dequeue(X), then enqueue(1). 
+In this way, enqueueLRU() and enqueueFIFO() can be combined too. The only difference is that, if you found the page in buffer, LRU should be updated.
+
+========================================
+
+Good work for hierarchy and error handling between storage manager and buffer manager.
