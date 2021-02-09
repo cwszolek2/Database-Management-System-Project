@@ -1,8 +1,9 @@
 # DATABASE MANAGEMENT SYSTEM APPLICATION
-===========
-*Coded in C and compiled and tested with gcc*
-*For University Class Project*
-*Lead coder - Chris Wszolek*
+===========  
+
+*Coded in C and compiled and tested with gcc*  
+*For University Class Project*  
+*Lead coder - Chris Wszolek*  
 
 This is a project for a University class focused on advanced databases, with a focus on database management system.  
 This is assignment 2 of 4, and resembles the most stable version of the projects we wrote.  
@@ -11,7 +12,7 @@ The interface of the project was given, and we were responsible for implementing
 Further, this was design by testing, and with the threshold of a successful assignment being the ability to pass the tests given  
 in the test files.  
 
-Represents a managements system used by databases, that interacts over the operating system (so still running Windows, Linux, etc)
+Represents a managements system used by databases, that interacts over the operating system (so still running Windows, Linux, etc)  
 
 
 ## ORIGINAL README
